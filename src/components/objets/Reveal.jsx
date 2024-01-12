@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
-function Reveal({ children }) {
+function Reveal({ children, customDelay = 0.25 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -24,7 +24,7 @@ function Reveal({ children }) {
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.25 }}
+        transition={{ duration: 0.5, delay: customDelay }}
       >
         {children}
       </motion.div>
@@ -35,7 +35,7 @@ function Reveal({ children }) {
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: 0.5, ease: "easeIn" }}
+        transition={{ duration: 0.5, ease: "easeIn", delay: customDelay }}
         className="absolute top-4 bottom-4 left-0 right-0 bg-green-500"
       />
     </div>

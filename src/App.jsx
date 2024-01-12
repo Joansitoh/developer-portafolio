@@ -22,7 +22,10 @@ function App() {
   return (
     <>
       <Sidebar />
-      <div className="ml-12 h-screen overflow-auto scroll-snap-y mandatory">
+      <div
+        className="ml-12 h-screen overflow-auto scroll-snap-y mandatory"
+        id="container"
+      >
         <div className="sticky top-0 z-50">
           <Navbar />
         </div>
@@ -37,7 +40,6 @@ function App() {
         <Page>
           <Proyects />
         </Page>
-        {/* Add more pages here */}
       </div>
     </>
   );
