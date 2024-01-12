@@ -5,14 +5,14 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import About from "./components/About";
-import Proyects from "./components/Proyects";
+import Proyects from "./components/Projects";
 
 // STYLES
 import "./App.css";
 
 const Page = ({ children }) => {
   return (
-    <div className="flex flex-col items-center justify-center max-w-7xl h-screen scroll-snap-start">
+    <div className="flex flex-col items-center max-w-7xl h-screen scroll-snap-start">
       {children}
     </div>
   );
@@ -27,7 +27,7 @@ function App() {
           <Navbar />
         </div>
         <Page>
-          <div className="my-40 w-2/3">
+          <div className="pt-20">
             <Header />
           </div>
         </Page>

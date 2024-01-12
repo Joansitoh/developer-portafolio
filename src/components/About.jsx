@@ -31,7 +31,7 @@ export default function About() {
 
   return (
     <div className="flex flex-col p-5 gap-3 max-w-2xl">
-      <Title title="About" />
+      <Title title="About" left={false} />
       <div className="flex gap-9">
         <div className="flex-1">
           <p className="font-light text-base">
