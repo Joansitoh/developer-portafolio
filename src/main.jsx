@@ -1,10 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+// REACT COMPONENTS
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+// IMPORTED COMPONENTS
+import { motion } from "framer-motion";
+
+// CUSTOM COMPONENTS
+import App from "./App.jsx";
+
+// STYLES
+import "./index.css";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <>
     <App />
-  </React.StrictMode>,
-)
+  </>
+);
