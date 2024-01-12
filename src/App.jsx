@@ -1,30 +1,43 @@
-// REACT COMPONENTS
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { useState } from "react";
-
-// IMPORTED COMPONENTS
 import { motion } from "framer-motion";
 
 // CUSTOM COMPONENTS
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import About from "./components/About";
+import Proyects from "./components/Proyects";
 
 // STYLES
 import "./App.css";
+
+const Page = ({ children }) => {
+  return (
+    <div className="flex flex-col items-center justify-center max-w-7xl h-screen scroll-snap-start">
+      {children}
+    </div>
+  );
+};
 
 function App() {
   return (
     <>
       <Sidebar />
-      <div className="ml-12">
-        <Navbar />
-        <div className="flex flex-col items-center justify-center max-w-7xl">
+      <div className="ml-12 h-screen overflow-auto scroll-snap-y mandatory">
+        <div className="sticky top-0 z-50">
+          <Navbar />
+        </div>
+        <Page>
           <div className="my-40 w-2/3">
             <Header />
           </div>
-        </div>
+        </Page>
+        <Page>
+          <About />
+        </Page>
+        <Page>
+          <Proyects />
+        </Page>
+        {/* Add more pages here */}
       </div>
     </>
   );
