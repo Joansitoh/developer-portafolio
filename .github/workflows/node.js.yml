@@ -25,3 +25,5 @@ jobs:
       - run: npm run build --if-present
       - name: Start Server
         run: npm run dev &
+      - name: Compile Server
+        run: npm run build
