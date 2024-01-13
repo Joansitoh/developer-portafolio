@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+// IMPORTED COMPONENTS
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
+
+// CUSTOM COMPONENTS
+import Configuration from "../utils/Config";
 
 const Link = ({ children, delay = 0.2, url = "" }) => {
   const handleClick = () => {
@@ -24,19 +27,30 @@ export default function Navbar() {
   return (
     <div className="flex p-5 gap-2 w-full justify-between">
       <div className="flex gap-2">
-        <Link url="https://www.linkedin.com/in/joansiitoh/">
+        <Link url={Configuration.get("navbar.linkedin")}>
           <FaLinkedin size={20} />
         </Link>
-        <Link delay={0.4} url="https://github.com/Joansitoh">
+        <Link delay={0.4} url={Configuration.get("navbar.github")}>
           <FaGithub size={20} />
         </Link>
-        <Link delay={0.6} url="https://twitter.com/joansiitohtv">
+        <Link delay={0.6} url={Configuration.get("navbar.twitter")}>
           <FaTwitter size={20} />
         </Link>
       </div>
       <Link>
-        <div className="w-36 h-10 rounded border-green-500 border items-center justify-center flex shadow-md">
-          <p className="text-center text-green-500">Bitanetic</p>
+        <div
+          className={
+            "w-36 h-10 rounded border items-center justify-center flex shadow-md " +
+            Configuration.get("theme.borderColor")
+          }
+        >
+          <p
+            className={
+              "text-center " + +Configuration.get("theme.textColor")
+            }
+          >
+            Bitanetic
+          </p>
         </div>
       </Link>
     </div>

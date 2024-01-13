@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+// REACT COMPONENTS
+import React, { useEffect } from "react";
 import Typewriter from "typewriter-effect/dist/core";
 
-import RevealContainer from "./objets/RevealContainer";
-import Reveal from "./objets/Reveal";
+// CUSTOM COMPONENTS
+import RevealContainer from "../utils/RevealContainer";
+import Reveal from "../utils/Reveal";
+import Configuration from "../utils/Config";
 
 export default function Header() {
   useEffect(() => {
     new Typewriter("#typewriter", {
-      strings: [
-        "Full Stack Developer",
-        "Minecraft Developer",
-        "System Administrator",
-      ],
+      strings: Configuration.get("header.works"),
       autoStart: true,
       loop: true,
       cursor: "",
@@ -21,44 +20,40 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="flex flex-col p-5 gap-3 max-w-3xl">
+    <div className="flex flex-col p-5 gap-3 pt-20">
       <RevealContainer>
-        <Reveal
-          children={
-            <p className="font-extrabold text-6xl">
-              Hey, I'm Joan<span className="text-green-400">.</span>
-            </p>
-          }
-        />
-        <Reveal
-          children={
-            <p className="font-normal text-2xl">
-              I'm a{" "}
-              <span
-                className="font-extrabold text-green-500"
-                id="typewriter"
-              ></span>
-            </p>
-          }
-        />
-        <Reveal
-          children={
-            <p className="font-light text-base">
-              Hello! I'm Joansiitoh, I've been programming for about 5 years on
-              Minecraft and other projects for Linux! I'm a Full Stack Developer
-              and I'm currently working on a project called{" "}
-              <a href="bitanetic.com">Bitanetic</a>! I'm also a System
-              Administrator and I've been working for 2 years on Linux servers!
-            </p>
-          }
-        />
-        <Reveal
-          children={
-            <button className="bg-green-400 hover:bg-green-600 text-black font-bold py-2 px-4 rounded w-48">
-              Contact Me
-            </button>
-          }
-        />
+        <Reveal>
+          <p className="font-extrabold text-6xl">
+            Hey, I'm {Configuration.get("header.name")}
+            <span className={Configuration.get("theme.textColor")}>.</span>
+          </p>
+        </Reveal>
+        <Reveal>
+          <p className="font-normal text-2xl">
+            I'm a{" "}
+            <span
+              className={
+                "font-extrabold " + Configuration.get("theme.textColor")
+              }
+              id="typewriter"
+            ></span>
+          </p>
+        </Reveal>
+        <Reveal>
+          <p className="font-light text-base">
+            {Configuration.get("header.description")}
+          </p>
+        </Reveal>
+        <Reveal>
+          <button
+            className={
+              "text-black font-bold py-2 px-4 rounded w-48 " +
+              Configuration.get("theme.bgColor")
+            }
+          >
+            Contact Me
+          </button>
+        </Reveal>
       </RevealContainer>
     </div>
   );

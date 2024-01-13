@@ -1,18 +1,17 @@
-import { motion } from "framer-motion";
-
 // CUSTOM COMPONENTS
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import About from "./components/About";
 import Proyects from "./components/Projects";
+import Configuration from "./utils/Config";
 
 // STYLES
 import "./App.css";
 
 const Page = ({ children }) => {
   return (
-    <div className="flex flex-col items-center max-w-7xl h-screen scroll-snap-start">
+    <div className="flex flex-col justify-start max-w-3xl w-full h-screen scroll-snap-start">
       {children}
     </div>
   );
@@ -29,17 +28,17 @@ function App() {
         <div className="sticky top-0 z-50">
           <Navbar />
         </div>
-        <Page>
-          <div className="pt-20">
+        <div className="items-center flex flex-col justify-center">
+          <Page>
             <Header />
-          </div>
-        </Page>
-        <Page>
-          <About />
-        </Page>
-        <Page>
-          <Proyects />
-        </Page>
+          </Page>
+          <Page>
+            <About />
+          </Page>
+          <Page>
+            <Proyects />
+          </Page>
+        </div>
       </div>
     </>
   );

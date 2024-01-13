@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+// IMPORTED COMPONENTS
 import { FaGithub, FaForward } from "react-icons/fa";
-import Title from "./objets/Title";
 import { motion } from "framer-motion";
-import Reveal from "./objets/Reveal";
+
+// CUSTOM COMPONENTS
+import Title from "../utils/Title";
+import Reveal from "../utils/Reveal";
+import Configuration from "../utils/Config";
 
 const Project = ({ title, description, technologies, sourceLink, link }) => {
   const openLink = ({ source }) => {
@@ -33,7 +36,12 @@ const Project = ({ title, description, technologies, sourceLink, link }) => {
         </div>
       </Reveal>
       <Reveal customDelay={0.35}>
-        <div className="flex gap-1 items-center text-green-500 font-bold">
+        <div
+          className={
+            "flex gap-1 items-center font-bold " +
+            Configuration.get("theme.textColor")
+          }
+        >
           {technologies.map((technology, index) => (
             <span key={index}>
               <p className="text-sm inline">{technology}</p>
@@ -48,7 +56,10 @@ const Project = ({ title, description, technologies, sourceLink, link }) => {
             ? description.substring(0, 120) + "..."
             : description}
 
-          <a href="#" className="ml-2 text-green-500">
+          <a
+            href="#"
+            className={"ml-2 " + Configuration.get("theme.textColor")}
+          >
             Learn more{" "}
           </a>
         </p>
@@ -62,22 +73,14 @@ export default function Proyects() {
     <div className="flex flex-col p-5 gap-3 max-w-3xl">
       <Title title="Proyects" />
       <div className="grid grid-cols-2 gap-5">
-        <Project
-          title={"ufw_manager_gui"}
-          description={
-            "UFW GUI Manager is a Python application that allows you to manage UFW (Uncomplicated Firewall) ports on a remote machine via SSH. The application features a simple and user-friendly graphical interface. I'm new to this so don't kill me either."
-          }
-          technologies={["Python", "PyQT5", "Paramiko"]}
-          link={"https://github.com/Joansitoh/ufw_manager_gui"}
-        />
-        <Project
-          title={"edge_profile_manager"}
-          description={
-            "Edge Profile Manager is a Python application that allows you to access Microsoft Edge profiles through a simple and friendly user interface."
-          }
-          technologies={["Python", "PyQT5", "Microsoft Edge"]}
-          link={"https://github.com/Joansitoh/edge_profile_manager"}
-        />
+        {Configuration.getAll().projects.map((project, index) => (
+          <Project
+            title={project.title}
+            description={project.description}
+            technologies={project.technologies}
+            link={project.url}
+          />
+        ))}
       </div>
     </div>
   );

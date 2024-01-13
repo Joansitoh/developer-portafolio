@@ -1,0 +1,39 @@
+{
+    "theme": {
+        "columnDirection": "left",
+        "bgColor": "bg-green-500",
+        "textColor": "text-green-500",
+        "borderColor": "border-green-500"
+    },
+    "navbar": {
+        "github": "https://github.com/Joansitoh",
+        "linkedin": "https://www.linkedin.com/in/joansiitoh",
+        "twitter": "https://twitter.com/joansiitohtv"
+    },
+    "header": {
+        "name": "Joan",
+        "description": "Hello! I'm Joansiitoh, I've been programming for about 5 years on Minecraft and other projects for Linux!",
+        "works": ["Full Stack Developer", "Minecraft Developer", "System Administrator"]
+    },
+    "about": {
+        "description": "",
+        "techWork": ["PostgreSQL", "MySQL", "Linux",  "Nginx", "Apache", "PHP", "XML", "HTML", "CSS", "JavaScript", "Python"],
+        "techFun": ["Spigot", "Spigot NMS", "Lua", "Java", "NodeJS", "React", "TailwindCSS", "MongoDB", "Redis", "Docker"]
+    },
+    "projects": [
+        {
+            "title": "ufw_manager_gui",
+            "description": "UFW GUI Manager is a Python application that allows you to manage UFW (Uncomplicated Firewall) ports on a remote machine via SSH. The application features a simple and user-friendly graphical interface. I'm new to this so don't kill me either.",
+            "technologies": ["Python", "PyQT5", "Paramiko"],
+            "url": "https://github.com/Joansitoh/ufw_manager_gui"
+        },
+        {
+            "title": "edge_profile_manager",
+            "description": "Edge Profile Manager is a Python application that allows you to access Microsoft Edge profiles through a simple and friendly user interface.",
+            "technologies": ["Python", "PyQT5", "Microsoft Edge"],
+            "url": "https://github.com/Joansitoh/edge_profile_manager"
+        }
+    ],
+    "experience": {
+    }
+}

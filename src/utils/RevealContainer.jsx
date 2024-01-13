@@ -1,3 +1,4 @@
+// REACT COMPONENTS
 import React from "react";
 import Reveal from "./Reveal";
 

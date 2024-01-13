@@ -1,5 +1,8 @@
+// REACT COMPONENTS
 import { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
+
+import Configuration from "../utils/Config";
 
 function Reveal({ children, customDelay = 0.25 }) {
   const ref = useRef(null);
@@ -36,7 +39,10 @@ function Reveal({ children, customDelay = 0.25 }) {
         initial="hidden"
         animate={slideControls}
         transition={{ duration: 0.5, ease: "easeIn", delay: customDelay }}
-        className="absolute top-4 bottom-4 left-0 right-0 bg-green-500"
+        className={
+          "absolute top-4 bottom-4 left-0 right-0 " +
+          Configuration.get("theme.bgColor")
+        }
       />
     </div>
   );
