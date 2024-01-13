@@ -18,59 +18,58 @@
 </p>
 <hr>
 
-##  Quick Links
+## Quick Links
 
-> - [ Overview](#-overview)
-> - [ Features](#-features)
-> - [ Modules](#-modules)
-> - [ Getting Started](#-getting-started)
->   - [ Installation](#-installation)
->   - [ Running developer-portafolio](#-running-developer-portafolio)
-> - [ Project Roadmap](#-project-roadmap)
-> - [ Contributing](#-contributing)
-> - [ License](#-license)
+> - [ Overview](#overview)
+> - [ Features](#features)
+> - [ Modules](#modules)
+> - [ Getting Started](#getting-started)
+>   - [ Installation](#installation)
+>   - [ Running developer-portafolio](#running-developer-portafolio)
+> - [ Project Roadmap](#project-roadmap)
+> - [ Contributing](#contributing)
+> - [ License](#license)
 
 ---
 
-##  Overview
+## Overview
 
 The developer-portafolio project is a web-based portfolio aimed at showcasing a developer's skills, projects, and experiences. It provides a platform for developers to present their work to potential employers or clients in an organized and visually appealing manner. The project leverages React.js and JavaScript to create an interactive user interface, with features such as project filtering, a responsive layout, and smooth navigation. Additionally, the codebase includes linting configurations and recommended practices for maintaining clean and efficient code. Overall, developer-portafolio offers developers a valuable tool for presenting their expertise and attracting opportunities.
 
 ---
 
-##  Features
+## Features
 
-|    |   Feature         | Description |
-|----|-------------------|---------------------------------------------------------------|
-| ⚙️  | **Architecture**  | The project follows a React-based architecture and utilizes Vite as the build tool. It uses Tailwind CSS for styling and Framer Motion for animations. The project structure and organization are not explicitly mentioned.|
-| 🔌 | **Integrations**  | Key integrations include React, Tailwind CSS, Framer Motion, and Vite. These external dependencies are required for the project to function properly.|
-| 📦 | **Dependencies**  | The key dependencies of the project include React, Tailwind CSS, Framer Motion, Vite, and other related dependencies required for development and building the project.|
-| 🚀 | **Scalability**   | The project is designed with scalability in mind, allowing you to easily add as many pages as needed to accommodate future growth. The architecture and tools chosen provide a flexible foundation for handling increased traffic and load.|
-
+|     | Feature          | Description                                                                                                                                                                                                                                 |
+| --- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ⚙️  | **Architecture** | The project follows a React-based architecture and utilizes Vite as the build tool. It uses Tailwind CSS for styling and Framer Motion for animations. The project structure and organization are not explicitly mentioned.                 |
+| 🔌  | **Integrations** | Key integrations include React, Tailwind CSS, Framer Motion, and Vite. These external dependencies are required for the project to function properly.                                                                                       |
+| 📦  | **Dependencies** | The key dependencies of the project include React, Tailwind CSS, Framer Motion, Vite, and other related dependencies required for development and building the project.                                                                     |
+| 🚀  | **Scalability**  | The project is designed with scalability in mind, allowing you to easily add as many pages as needed to accommodate future growth. The architecture and tools chosen provide a flexible foundation for handling increased traffic and load. |
 
 ---
 
-##  Modules
+## Modules
 
 <details closed><summary>Configuration</summary>
 
 | File                                                                                                       | Summary                                                                                                                                                                                                                           |
-| ---                                                                                                        | ---                                                                                                                                                                                                                               |
+| ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [configuration.json](https://github.com/Joansitoh/developer-portafolio/blob/master/cfg\configuration.json) | This code snippet contributes to a developer portfolio website's architecture. It handles the configuration details for the website, such as the theme, navbar links, header information, project details, and technologies used. |
 
 </details>
 
 ---
 
-##  Getting Started
+## Getting Started
 
-***Requirements***
+**_Requirements_**
 
 Ensure you have the following dependencies installed on your system:
 
-* **Nodejs**: `version 20.X.X`
+- **Nodejs**: `version 20.X.X`
 
-###  Installation
+### Installation
 
 1. Clone the developer-portafolio repository:
 
@@ -90,7 +89,7 @@ cd developer-portafolio
 npm install
 ```
 
-###  Running developer-portafolio
+### Running developer-portafolio
 
 Use the following command to run developer-portafolio:
 
@@ -100,14 +99,14 @@ node run dev
 
 ---
 
-##  Project Roadmap
+## Project Roadmap
 
-- [X] `► Create configuration file`
+- [x] `► Create configuration file`
 - [ ] `► Animate background`
 
 ---
 
-##  Contributing
+## Contributing
 
 Contributions are welcome! Here are several ways you can contribute:
 
@@ -144,12 +143,12 @@ Once your PR is reviewed and approved, it will be merged into the main branch.
 
 ---
 
-##  License
+## License
 
 This project is protected under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For more details, refer to the [LICENSE](https://www.apache.org/licenses/LICENSE-2.0) file.|
 
 ---
 
-[**Return**](#-quick-links)
+[**Return**](#quick-links)
 
 ---
