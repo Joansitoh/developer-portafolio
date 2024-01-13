@@ -2,9 +2,6 @@
 import React, { useEffect } from "react";
 import Typewriter from "typewriter-effect/dist/core";
 
-// IMPORTED COMPONENTS
-import classNames from "classnames";
-
 // CUSTOM COMPONENTS
 import RevealContainer from "../utils/RevealContainer";
 import Reveal from "../utils/Reveal";
