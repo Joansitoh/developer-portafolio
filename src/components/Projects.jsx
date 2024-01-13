@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Title from "../utils/Title";
 import Reveal from "../utils/Reveal";
 import Configuration from "../utils/Config";
+import RevealContainer from "../utils/RevealContainer";
 
 const Project = ({ title, description, technologies, sourceLink, link }) => {
   const theme = Configuration.get("theme");
@@ -14,53 +15,55 @@ const Project = ({ title, description, technologies, sourceLink, link }) => {
   };
 
   return (
-    <motion.div className="flex flex-col gap-2">
-      <Reveal>
-        <div className="bg-gray-800 bg-opacity-85 h-44 rounded flex flex-col justify-end items-center">
-          <div className="h-36 w-4/5 bg-white rounded"></div>
-        </div>
-      </Reveal>
-      <Reveal customDelay={0.3}>
-        <div className="flex gap-3 items-center">
-          <p className="font-extrabold text-base">{title}</p>
-          <div className="h-1 w-full sidebar" />
-          <FaGithub
-            size={30}
-            className="cursor-pointer"
-            onClick={() => openLink({ source: true })}
-          />
-          <FaForward
-            size={30}
-            className="cursor-pointer"
-            onClick={() => openLink({ source: false })}
-          />
-        </div>
-      </Reveal>
-      <Reveal customDelay={0.35}>
-        <div
-          className="flex gap-1 items-center font-bold"
-          style={{ color: theme.textColor }}
-        >
-          {technologies.map((technology, index) => (
-            <span key={index}>
-              <p className="text-sm inline">{technology}</p>
-              {index !== technologies.length - 1 && <span> - </span>}
-            </span>
-          ))}
-        </div>
-      </Reveal>
-      <Reveal customDelay={0.4}>
-        <p className="font-light text-sm">
-          {description.length > 120
-            ? description.substring(0, 120) + "..."
-            : description}
+    <RevealContainer>
+      <motion.div className="flex flex-col gap-2 max-w-sm">
+        <Reveal>
+          <div className="bg-gray-800 bg-opacity-85 h-44 rounded flex flex-col justify-end items-center">
+            <div className="h-36 w-4/5 bg-white rounded"></div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="flex gap-3 items-center">
+            <p className="font-extrabold text-base">{title}</p>
+            <div className="h-1 w-full sidebar" />
+            <FaGithub
+              size={30}
+              className="cursor-pointer"
+              onClick={() => openLink({ source: true })}
+            />
+            <FaForward
+              size={30}
+              className="cursor-pointer"
+              onClick={() => openLink({ source: false })}
+            />
+          </div>
+        </Reveal>
+        <Reveal>
+          <div
+            className="flex gap-1 items-center font-bold"
+            style={{ color: theme.textColor }}
+          >
+            {technologies.map((technology, index) => (
+              <span key={index}>
+                <p className="text-sm inline">{technology}</p>
+                {index !== technologies.length - 1 && <span> - </span>}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+        <Reveal>
+          <p className="font-light text-sm">
+            {description.length > 120
+              ? description.substring(0, 120) + "..."
+              : description}
 
-          <a href="#" className="ml-2" style={{ color: theme.textColor }}>
-            Learn more{" "}
-          </a>
-        </p>
-      </Reveal>
-    </motion.div>
+            <a href="#" className="ml-2" style={{ color: theme.textColor }}>
+              Learn more{" "}
+            </a>
+          </p>
+        </Reveal>
+      </motion.div>
+    </RevealContainer>
   );
 };
 
@@ -68,7 +71,7 @@ export default function Proyects() {
   return (
     <div className="flex flex-col p-5 gap-3 max-w-3xl">
       <Title title="Proyects" />
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-5 justify-items-center items-center">
         {Configuration.getAll().projects.map((project, index) => (
           <Project
             title={project.title}

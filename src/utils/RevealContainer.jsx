@@ -2,7 +2,7 @@
 import React from "react";
 import Reveal from "./Reveal";
 
-function RevealContainer({ children, increase = 0.2, delay = 0.2 }) {
+function RevealContainer({ children, increase = 0.05, delay = 0.2 }) {
   const addDelayToReveals = (children, depth = 0) => {
     if (depth > 5) {
       return children;
