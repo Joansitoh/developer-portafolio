@@ -38,6 +38,14 @@ The developer-portafolio project is a web-based portfolio aimed at showcasing a 
 
 ---
 
+<div style="display:flex; justify-content:space-between;">
+  <img src="https://imgur.com/KkLVB79.png" alt="Preview Home" width="400"/>
+  <img src="https://imgur.com/WBFuXRC.png" alt="Preview About" width="400"/>
+  <img src="https://imgur.com/kG1ymf5.gif" alt="Preview" width="400"/>
+</div>
+
+---
+
 ## Features
 
 |     | Feature          | Description                                                                                                                                                                                                                                 |
