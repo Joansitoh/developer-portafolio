@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+
+    <style>
+      #bg-custom {
+        z-index: -1;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+      }
+
+      #bg-custom > div:first-child {
+        z-index: -1;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-image: linear-gradient(to right, #4f4f4f2e 1px, transparent 1px), linear-gradient(to bottom, #8080800a 1px, transparent 1px);
+        background-size: 14px 24px;
+      }
+      #bg-custom > div:last-child {
+        z-index: -1;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: -10%;
+        height: 1000px;
+        width: 1000px;
+        border-radius: 50%;
+        background-image: radial-gradient(circle 400px at 50% 300px, #fbfbfb36, #000);
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-C3g22CuD.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-62dnbpma.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="bg-custom">
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+</html>
