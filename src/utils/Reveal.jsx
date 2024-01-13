@@ -6,6 +6,7 @@ import Configuration from "../utils/Config";
 
 function Reveal({ children, customDelay = 0.25 }) {
   const ref = useRef(null);
+  const theme = Configuration.get("theme");
   const isInView = useInView(ref, { once: true });
 
   const mainControls = useAnimation();
@@ -39,10 +40,8 @@ function Reveal({ children, customDelay = 0.25 }) {
         initial="hidden"
         animate={slideControls}
         transition={{ duration: 0.5, ease: "easeIn", delay: customDelay }}
-        className={
-          "absolute top-4 bottom-4 left-0 right-0 " +
-          Configuration.get("theme.bgColor")
-        }
+        className="absolute top-0 bottom-4 left-0 right-0"
+        style={{ backgroundColor: theme.bgColor }}
       />
     </div>
   );

@@ -24,6 +24,7 @@ const Link = ({ children, delay = 0.2, url = "" }) => {
 };
 
 export default function Navbar() {
+  const theme = Configuration.get("theme");
   return (
     <div className="flex p-5 gap-2 w-full justify-between">
       <div className="flex gap-2">
@@ -39,16 +40,13 @@ export default function Navbar() {
       </div>
       <Link>
         <div
-          className={
-            "w-36 h-10 rounded border items-center justify-center flex shadow-md " +
-            Configuration.get("theme.borderColor")
-          }
+          className="w-36 h-10 rounded border items-center justify-center flex shadow-md"
+          style={{ borderColor: theme.borderColor }}
+          onClick={() => {
+            window.open("https://bitanetic.com");
+          }}
         >
-          <p
-            className={
-              "text-center " + +Configuration.get("theme.textColor")
-            }
-          >
+          <p className="text-center" style={{ color: theme.textColor }}>
             Bitanetic
           </p>
         </div>

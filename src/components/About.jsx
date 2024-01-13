@@ -7,6 +7,7 @@ import Title from "../utils/Title";
 import Configuration from "../utils/Config";
 
 export default function About() {
+  const theme = Configuration.get("theme");
   return (
     <div className="flex flex-col p-5 gap-3 max-w-3xl">
       <RevealContainer>
@@ -26,9 +27,8 @@ export default function About() {
               <Reveal>
                 <div className="flex gap-2 items-center">
                   <div
-                    className={
-                      "w-5 h-5 rounded " + Configuration.get("theme.bgColor")
-                    }
+                    className="w-5 h-5 rounded"
+                    style={{ backgroundColor: theme.bgColor }}
                   />
                   <p className="font-bold text-xl">Learn at work or study</p>
                 </div>
@@ -47,9 +47,8 @@ export default function About() {
               <Reveal>
                 <div className="flex gap-2 items-center">
                   <div
-                    className={
-                      "w-5 h-5 rounded " + Configuration.get("theme.bgColor")
-                    }
+                    className="w-5 h-5 rounded"
+                    style={{ backgroundColor: theme.bgColor }}
                   />
                   <p className="font-bold text-xl">Use for fun</p>
                 </div>

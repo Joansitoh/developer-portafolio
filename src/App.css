@@ -1,3 +1,29 @@
 .sidebar {
   background-color: rgba(17, 17, 17, 0.774);
 }
+
+.input-block {
+  position: relative;
+}
+
+.input-block input {
+  outline: none;
+}
+
+.input-block span.placeholder {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  transition: all 0.2s;
+  transform-origin: 0% 0%;
+  pointer-events: none;
+}
+
+.input-block textarea:valid + span.placeholder,
+.input-block textarea:focus + span.placeholder,
+.input-block input:valid + span.placeholder,
+.input-block input:focus + span.placeholder {
+  transform: scale(0.8) translateY(-45px);
+  font-size: 1.2rem;
+  border-bottom: 1px solid #fff;
+}

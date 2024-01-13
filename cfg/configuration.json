@@ -1,9 +1,9 @@
 {
     "theme": {
         "side": "center",
-        "bgColor": "bg-green-500",
-        "textColor": "text-green-500",
-        "borderColor": "border-green-500"
+        "bgColor": "rgb(34, 197, 94)",
+        "textColor": "rgb(34, 197, 94)",
+        "borderColor": "rgb(34, 197, 94)"
     },
     "navbar": {
         "github": "https://github.com/Joansitoh",

@@ -1,6 +1,7 @@
 import Configuration from "../utils/Config";
 
 const Title = ({ title, left = true }) => {
+  const theme = Configuration.get("theme");
   return (
     <div className="flex gap-5 items-center">
       {left ? (
@@ -8,14 +9,14 @@ const Title = ({ title, left = true }) => {
           <div className="h-1 w-full sidebar" />
           <p className="font-extrabold text-6xl">
             {title}
-            <span className={Configuration.get("theme.textColor")}>.</span>
+            <span style={{ color: theme.textColor }}>.</span>
           </p>
         </>
       ) : (
         <>
           <p className="font-extrabold text-6xl">
             {title}
-            <span className={Configuration.get("theme.textColor")}>.</span>
+            <span style={{ color: theme.textColor }}>.</span>
           </p>
           <div className="h-1 w-full sidebar" />
         </>

@@ -8,6 +8,7 @@ import Reveal from "../utils/Reveal";
 import Configuration from "../utils/Config";
 
 const Project = ({ title, description, technologies, sourceLink, link }) => {
+  const theme = Configuration.get("theme");
   const openLink = ({ source }) => {
     window.open(source ? sourceLink : link);
   };
@@ -37,10 +38,8 @@ const Project = ({ title, description, technologies, sourceLink, link }) => {
       </Reveal>
       <Reveal customDelay={0.35}>
         <div
-          className={
-            "flex gap-1 items-center font-bold " +
-            Configuration.get("theme.textColor")
-          }
+          className="flex gap-1 items-center font-bold"
+          style={{ color: theme.textColor }}
         >
           {technologies.map((technology, index) => (
             <span key={index}>
@@ -56,10 +55,7 @@ const Project = ({ title, description, technologies, sourceLink, link }) => {
             ? description.substring(0, 120) + "..."
             : description}
 
-          <a
-            href="#"
-            className={"ml-2 " + Configuration.get("theme.textColor")}
-          >
+          <a href="#" className="ml-2" style={{ color: theme.textColor }}>
             Learn more{" "}
           </a>
         </p>

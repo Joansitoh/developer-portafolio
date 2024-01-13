@@ -2,12 +2,17 @@
 import React, { useEffect } from "react";
 import Typewriter from "typewriter-effect/dist/core";
 
+// IMPORTED COMPONENTS
+import classNames from "classnames";
+
 // CUSTOM COMPONENTS
 import RevealContainer from "../utils/RevealContainer";
 import Reveal from "../utils/Reveal";
 import Configuration from "../utils/Config";
 
 export default function Header() {
+  const theme = Configuration.get("theme");
+
   useEffect(() => {
     new Typewriter("#typewriter", {
       strings: Configuration.get("header.works"),
@@ -25,16 +30,15 @@ export default function Header() {
         <Reveal>
           <p className="font-extrabold text-6xl">
             Hey, I'm {Configuration.get("header.name")}
-            <span className={Configuration.get("theme.textColor")}>.</span>
+            <span style={{ color: theme.textColor }}>.</span>
           </p>
         </Reveal>
         <Reveal>
           <p className="font-normal text-2xl">
             I'm a{" "}
             <span
-              className={
-                "font-extrabold " + Configuration.get("theme.textColor")
-              }
+              className="font-extrabold "
+              style={{ color: theme.textColor }}
               id="typewriter"
             ></span>
           </p>
@@ -46,10 +50,8 @@ export default function Header() {
         </Reveal>
         <Reveal>
           <button
-            className={
-              "text-black font-bold py-2 px-4 rounded w-48 " +
-              Configuration.get("theme.bgColor")
-            }
+            className="text-black font-bold py-2 px-4 rounded w-48"
+            style={{ backgroundColor: theme.bgColor }}
           >
             Contact Me
           </button>

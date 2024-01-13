@@ -1,9 +1,15 @@
 import configuration from "../../cfg/configuration.json";
 
+let config = null;
+
 const Configuration = {
   get: (key) => {
+    if (!config) {
+      config = configuration;
+    }
+
     const parts = key.split(".");
-    let value = configuration;
+    let value = config;
 
     for (let part of parts) {
       value = value[part];
@@ -11,7 +17,12 @@ const Configuration = {
     }
     return value;
   },
-  getAll: () => configuration,
+  getAll: () => {
+    if (!config) {
+      config = configuration;
+    }
+    return config;
+  },
 };
 
 export default Configuration;

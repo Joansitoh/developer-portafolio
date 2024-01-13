@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import About from "./components/About";
 import Proyects from "./components/Projects";
+import Contact from "./components/Contact";
 import Configuration from "./utils/Config";
 
 // STYLES
@@ -49,6 +50,9 @@ function App() {
           </Page>
           <Page>
             <Proyects />
+          </Page>
+          <Page>
+            <Contact />
           </Page>
         </div>
       </div>
