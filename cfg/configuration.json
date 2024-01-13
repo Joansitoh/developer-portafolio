@@ -1,6 +1,6 @@
 {
     "theme": {
-        "columnDirection": "left",
+        "side": "center",
         "bgColor": "bg-green-500",
         "textColor": "text-green-500",
         "borderColor": "border-green-500"

@@ -18,6 +18,13 @@ const Page = ({ children }) => {
 };
 
 function App() {
+  const position = Configuration.get("theme.side");
+  const positions = {
+    left: "items-start",
+    right: "items-end",
+    center: "items-center",
+  };
+
   return (
     <>
       <Sidebar />
@@ -28,7 +35,12 @@ function App() {
         <div className="sticky top-0 z-50">
           <Navbar />
         </div>
-        <div className="items-center flex flex-col justify-center">
+        {/* <div className={"items-center flex flex-col " + positions[position]}> */}
+        <div
+          className={
+            "px-20 flex flex-col justify-center " + positions[position]
+          }
+        >
           <Page>
             <Header />
           </Page>
