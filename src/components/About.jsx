@@ -33,7 +33,7 @@ export default function About() {
   ];
 
   return (
-    <div className="flex flex-col p-5 gap-3 max-w-2xl">
+    <div className="flex flex-col p-5 gap-3 max-w-3xl">
       <RevealContainer>
         <Reveal>
           <Title title="About" left={false} />

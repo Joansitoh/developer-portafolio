@@ -21,7 +21,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="flex flex-col p-5 gap-3 max-w-2xl">
+    <div className="flex flex-col p-5 gap-3 max-w-3xl">
       <RevealContainer>
         <Reveal
           children={
@@ -44,11 +44,11 @@ export default function Header() {
         <Reveal
           children={
             <p className="font-light text-base">
-              Hello! I'm Joan, a 15 year old developer from the Philippines. I'm
-              a full stack developer, system administrator, and Minecraft plugin
-              developer. I'm currently working on{" "}
-              <a href="">Minecraft Philippines</a> and{" "}
-              <a href="">Minecraft Philippines Network</a>.
+              Hello! I'm Joansiitoh, I've been programming for about 5 years on
+              Minecraft and other projects for Linux! I'm a Full Stack Developer
+              and I'm currently working on a project called{" "}
+              <a href="bitanetic.com">Bitanetic</a>! I'm also a System
+              Administrator and I've been working for 2 years on Linux servers!
             </p>
           }
         />
