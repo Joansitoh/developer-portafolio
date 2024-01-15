@@ -8,18 +8,34 @@ import Reveal from "../utils/Reveal";
 import Configuration from "../utils/Config";
 import RevealContainer from "../utils/RevealContainer";
 
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 const Project = ({ title, description, technologies, sourceLink, link }) => {
   const theme = Configuration.get("theme");
   const openLink = ({ source }) => {
     window.open(source ? sourceLink : link);
   };
 
+  const [screenshot, setScreenshot] = useState(null);
+
+  useEffect(() => {
+    const screenshotUrl = `http://localhost:3000/screenshot?url=${link}`;
+    setScreenshot(screenshotUrl);
+  }, [link]);
+
   return (
     <RevealContainer>
       <motion.div className="flex flex-col gap-2 max-w-sm">
         <Reveal>
-          <div className="bg-gray-800 bg-opacity-85 h-44 rounded flex flex-col justify-end items-center">
-            <div className="h-36 w-4/5 bg-white rounded"></div>
+          <div className="bg-zinc-700 bg-opacity-85 h-44 rounded flex flex-col justify-end items-center">
+            <div
+              className="h-36 w-4/5 bg-white rounded"
+              style={{
+                backgroundImage: `url(${screenshot})`,
+                backgroundSize: "cover",
+              }}
+            ></div>
           </div>
         </Reveal>
         <Reveal>
