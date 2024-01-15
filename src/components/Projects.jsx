@@ -35,7 +35,13 @@ const Project = ({ title, description, technologies, sourceLink, link }) => {
                 backgroundImage: `url(${screenshot})`,
                 backgroundSize: "cover",
               }}
-            ></div>
+            >
+              {screenshot == null && (
+                <div className="flex h-full w-full justify-center items-center">
+                  <p className="text-black">LOADING</p>
+                </div>
+              )}
+            </div>
           </div>
         </Reveal>
         <Reveal>

@@ -32,6 +32,12 @@
             "description": "Edge Profile Manager is a Python application that allows you to access Microsoft Edge profiles through a simple and friendly user interface.",
             "technologies": ["Python", "PyQT5", "Microsoft Edge"],
             "url": "https://github.com/Joansitoh/edge_profile_manager"
+        },
+        {
+            "title": "developer-portafolio",
+            "description": "The developer-portafolio project is a web-based portfolio aimed at showcasing a developer's skills, projects, and experiences",
+            "technologies": ["React", "NodeJS", "TailwindCSS"],
+            "url": "https://github.com/Joansitoh/developer-portafolio"
         }
     ],
     "experience": {
