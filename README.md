@@ -1,162 +1,236 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
-</p>
-<p align="center">
-    <h1 align="center">DEVELOPER-PORTAFOLIO</h1>
-</p>
-<p align="center">
-    <em>Build Your Digital Presence with Developer Portafolio!</em>
-</p>
-<p align="center">
-	<img src="https://img.shields.io/github/license/Joansitoh/developer-portafolio?style=default&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/Joansitoh/developer-portafolio?style=default&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/Joansitoh/developer-portafolio?style=default&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/Joansitoh/developer-portafolio?style=default&color=0080ff" alt="repo-language-count">
-<p>
-<p align="center">
-	<!-- default option, no dependency badges. -->
-</p>
-<hr>
+<div align="center">
 
-## Quick Links
+<img src="docs/hero.gif" alt="joan.sh: the portfolio boots, decodes the name and starts the ASCII shader" width="100%" />
 
-> - [ Overview](#overview)
-> - [ Features](#features)
-> - [ Modules](#modules)
-> - [ Getting Started](#getting-started)
->   - [ Installation](#installation)
->   - [ Running developer-portafolio](#running-developer-portafolio)
-> - [ Project Roadmap](#project-roadmap)
-> - [ Contributing](#contributing)
-> - [ License](#license)
+# joan.sh
+
+**An interactive developer portfolio that behaves like a machine you can use.**
+It boots, it has a shell, and every section runs a command.
+
+[**Live demo**](https://joansitoh.github.io/developer-portafolio/) ·
+[Features](#features) ·
+[Terminal](#the-terminal) ·
+[Make it yours](#make-it-yours) ·
+[Run it locally](#getting-started)
+
+![React](https://img.shields.io/badge/React-19-0b0d10?style=flat-square&logo=react&logoColor=61dafb)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-0b0d10?style=flat-square&logo=typescript&logoColor=3178c6)
+![Vite](https://img.shields.io/badge/Vite-8-0b0d10?style=flat-square&logo=vite&logoColor=bd34fe)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-0b0d10?style=flat-square&logo=tailwindcss&logoColor=38bdf8)
+![GSAP](https://img.shields.io/badge/GSAP-3.15-0b0d10?style=flat-square&logo=greensock&logoColor=88ce02)
+![WebGL2](https://img.shields.io/badge/WebGL2-custom%20shader-0b0d10?style=flat-square&logo=webgl&logoColor=b6ff3b)
+![License](https://img.shields.io/github/license/Joansitoh/developer-portafolio?style=flat-square&color=0b0d10&labelColor=0b0d10)
+
+</div>
 
 ---
 
 ## Overview
 
-The developer-portafolio project is a web-based portfolio aimed at showcasing a developer's skills, projects, and experiences. It provides a platform for developers to present their work to potential employers or clients in an organized and visually appealing manner. The project leverages React.js and JavaScript to create an interactive user interface, with features such as project filtering, a responsive layout, and smooth navigation. Additionally, the codebase includes linting configurations and recommended practices for maintaining clean and efficient code. Overall, developer-portafolio offers developers a valuable tool for presenting their expertise and attracting opportunities.
+Most developer portfolios are a hero, a grid of cards and a contact form. This one leans into
+what developers actually live in: a terminal, a status line, an editor and `git log`.
 
----
+- A **kernel-style boot log** wipes away into the hero.
+- A hand-written **WebGL2 shader** renders a living field of ASCII glyphs behind it.
+- You get around with a **tmux-style status bar**, and every section opens with the shell
+  command that "prints" it.
+- Projects show **real code taken from their repositories**, typed into an editor pane.
+- A real **interactive shell** is always one key away: press <kbd>`</kbd>.
 
-<div style="display:flex; justify-content:space-between;">
-  <img src="https://imgur.com/KkLVB79.png" alt="Preview Home" width="400"/>
-  <img src="https://imgur.com/WBFuXRC.png" alt="Preview About" width="400"/>
-  <img src="https://imgur.com/kG1ymf5.gif" alt="Preview" width="400"/>
-</div>
-
----
+Every line of copy, every project and every terminal answer comes from one typed file,
+[`src/content/profile.ts`](src/content/profile.ts).
 
 ## Features
 
-|     | Feature          | Description                                                                                                                                                                                                                                 |
-| --- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚙️  | **Architecture** | The project follows a React-based architecture and utilizes Vite as the build tool. It uses Tailwind CSS for styling and Framer Motion for animations. The project structure and organization are not explicitly mentioned.                 |
-| 🔌  | **Integrations** | Key integrations include React, Tailwind CSS, Framer Motion, and Vite. These external dependencies are required for the project to function properly.                                                                                       |
-| 📦  | **Dependencies** | The key dependencies of the project include React, Tailwind CSS, Framer Motion, Vite, and other related dependencies required for development and building the project.                                                                     |
-| 🚀  | **Scalability**  | The project is designed with scalability in mind, allowing you to easily add as many pages as needed to accommodate future growth. The architecture and tools chosen provide a flexible foundation for handling increased traffic and load. |
+<table>
+<tr>
+<td width="50%" valign="top">
 
----
+### Hero & ASCII field
+The background is a fragment shader that turns domain-warped simplex noise into monospace
+glyphs, sampled from a font atlas generated at runtime with the site's own font. The cursor
+bends the field with a ripple and a few columns fall like `tail -f`. The name uses the
+variable font's weight axis, so letters get heavier as the cursor gets close, and the role
+line decodes through random glyphs.
 
-## Modules
+</td>
+<td width="50%"><img src="docs/hero.png" alt="Hero section with the ASCII shader background" /></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/about.png" alt="About section with neofetch card and counters" /></td>
+<td width="50%" valign="top">
 
-<details closed><summary>Configuration</summary>
+### `cat about.md`
+Paragraphs light up word by word as you read, scrubbed to the scroll position. Next to them
+sits a `neofetch` card that "runs" when it comes into view, followed by animated counters.
 
-| File                                                                                                       | Summary                                                                                                                                                                                                                           |
-| ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [configuration.json](https://github.com/Joansitoh/developer-portafolio/blob/master/cfg\configuration.json) | This code snippet contributes to a developer portfolio website's architecture. It handles the configuration details for the website, such as the theme, navbar links, header information, project details, and technologies used. |
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
-</details>
+### `ls ~/projects`
+On desktop the section pins and the projects scroll sideways, each panel settling in 3D as it
+reaches the centre. Every project is a window with an editor pane showing an **excerpt from
+its real repository** that types itself in, with a tiny dependency-free syntax highlighter.
+Older work follows as an `ls -la ~/archive` listing.
 
----
+</td>
+<td width="50%"><img src="docs/work.png" alt="Projects section: pinned horizontal scroll with code editor" /></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/log.png" alt="Career history drawn as a git graph" /></td>
+<td width="50%" valign="top">
 
-## Getting Started
+### `git log --graph`
+Career history as commits on branches (`minecraft`, `sysadmin`, `web`, `systems`). The graph
+draws itself as you scroll and each commit node pops in as the line reaches it.
 
-**_Requirements_**
+Also in the page: `tree ~/stack` printed line by line with marquees that react to scroll
+velocity, and an **`ssh` contact session** that asks three questions and opens your mail
+client with everything filled in.
 
-Ensure you have the following dependencies installed on your system:
+</td>
+</tr>
+</table>
 
-- **Nodejs**: `version 20.X.X`
+### Mobile
 
-### Installation
+The horizontal scroll becomes a vertical stack of cards, the shader drops its intensity and
+density, and the custom cursor stays off on touch devices.
 
-1. Clone the developer-portafolio repository:
+<p align="center"><img src="docs/mobile.png" alt="Mobile layout" width="560" /></p>
 
-```sh
-git clone https://github.com/Joansitoh/developer-portafolio
-```
+## The terminal
 
-2. Change to the project directory:
+Press <kbd>`</kbd> (or <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>K</kbd>) anywhere to drop down a
+Quake-style shell. It has command history (<kbd>↑</kbd>/<kbd>↓</kbd>), <kbd>Tab</kbd>
+completion for commands and arguments, and <kbd>Ctrl</kbd>+<kbd>L</kbd> to clear.
 
-```sh
+<p align="center"><img src="docs/terminal.png" alt="Interactive terminal running neofetch and git log" /></p>
+
+| Command | What it does |
+| --- | --- |
+| `help` | List every command |
+| `whoami` · `cat about.md` | Who I am |
+| `ls` · `ls archive` | Featured projects / older work |
+| `open <project>` | Open a project (live site or repo) in a new tab |
+| `cd <section>` | Smooth-scroll to `home`, `about`, `work`, `stack`, `log` or `contact` |
+| `neofetch` | System info, the developer way |
+| `git log` | Career history |
+| `stack` | Tools I build with |
+| `contact` | Email and socials |
+| `theme <name>` | Switch the accent live: `phosphor`, `amber`, `cyan`, `magenta`, `ice` |
+| `crt on\|off` | Toggle scanlines and film grain |
+| `perf auto\|lite\|full` | Rendering quality (lite = no grain, cheaper shader) |
+| `history` · `date` · `echo` · `clear` · `exit` | The usual |
+
+There are also a few easter eggs. Try `sudo`, `vim` or `rm -rf /`.
+
+## Tech stack
+
+| Area | Choice | Why |
+| --- | --- | --- |
+| UI | **React 19** + **TypeScript** (strict) | Small components, typed content |
+| Build | **Vite 8** | Instant dev server, tiny config |
+| Styling | **Tailwind CSS 4** | Design tokens in CSS (`@theme`), accent swapped at runtime via CSS variables |
+| Animation | **GSAP 3.15**: ScrollTrigger, SplitText, ScrambleText, CustomEase | Pinning, scrubbing, masked line reveals, glyph scrambles |
+| Smooth scroll | **Lenis**, driven by GSAP's ticker | One clock for scroll and animation |
+| Graphics | **Raw WebGL2** | One fragment shader, one draw call, no 3D library |
+| Fonts | JetBrains Mono (variable) + Instrument Serif, self-hosted | Mono for everything, serif italic for emphasis |
+| State | ~60-line store on `useSyncExternalStore` | Accent, CRT and terminal state with no dependencies |
+
+## Getting started
+
+Requires **Node.js 20.19+ or 22.12+**.
+
+```bash
+git clone https://github.com/Joansitoh/developer-portafolio.git
 cd developer-portafolio
-```
-
-3. Install the dependencies:
-
-```sh
 npm install
+npm run dev
 ```
 
-### Running developer-portafolio
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server at `http://localhost:5173` |
+| `npm run build` | Type-check and build the production bundle into `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run typecheck` | Type-check only |
 
-Use the following command to run developer-portafolio:
+## Make it yours
 
-```sh
-node run dev
+Everything the site says lives in **[`src/content/profile.ts`](src/content/profile.ts)**:
+
+| Export | Drives |
+| --- | --- |
+| `profile` | Name, handle, location, roles, pitch, bio, email, socials, `neofetch` rows, availability badge |
+| `projects` | Featured projects: tagline, description, stack, links and the **code snippet** shown in the editor pane |
+| `archive` | The `ls -la ~/archive` listing |
+| `stack` | The `tree ~/stack` directories |
+| `log` | `git log` entries: branch, type, scope, message, body, tags |
+| `sections` | Section ids, labels and the command each one "runs" |
+
+In the pitch and section titles, wrap words in `*asterisks*` to set them in the serif italic
+accent. Accent colours live in [`src/lib/themes.ts`](src/lib/themes.ts).
+
+## Accessibility & performance
+
+- **`prefers-reduced-motion`** is respected everywhere: no boot sequence, no scroll animations,
+  and the shader renders a single static frame.
+- Skip link, semantic landmarks, keyboard-reachable navigation and terminal, and visible focus
+  states. Animated text keeps an accessible label.
+- The native cursor stays on touch devices and inside text fields.
+- **Two-pass shader.** The noise runs once per character cell into a tiny texture (~100×60),
+  then a trivial per-pixel pass stamps the glyphs: roughly 200× less GPU work than per pixel.
+  It starts only once it's near the viewport and after the intro, and pauses off screen or in
+  hidden tabs.
+- **Adaptive quality.** Sustained slow frames lower the shader resolution, then cap it at 30 fps.
+- **Lite mode** turns on automatically on low-end hardware (≤ 4 cores, ≤ 4 GB RAM, Save-Data)
+  or when a short FPS probe after load reads under 40 fps. It drops the film grain and starts
+  the shader in its cheapest setting. Override it from the terminal: `perf auto|lite|full`.
+- No full-screen blend modes or backdrop blurs, which are expensive to composite on weak GPUs.
+- The boot sequence is shown once per session and any key skips it.
+
+## Project structure
+
+```
+src/
+├── content/
+│   └── profile.ts          # all copy & data, the only file you need to edit
+├── components/
+│   ├── AsciiField.tsx      # WebGL2 ASCII shader
+│   ├── BootSequence.tsx    # kernel-style boot log
+│   ├── StatusBar.tsx       # tmux-style navigation
+│   ├── SectionHeader.tsx   # "01 // about" + prompt + masked heading
+│   ├── terminal/
+│   │   ├── Terminal.tsx    # drop-down shell UI
+│   │   └── commands.tsx    # command registry & Tab completion
+│   └── Cursor.tsx · Scramble.tsx · Magnetic.tsx · Marquee.tsx · Rich.tsx
+├── sections/               # Hero · About · Projects · Stack · Log · Contact · Footer
+├── lib/                    # gsap setup, lenis, store, themes, syntax highlighter
+├── hooks/                  # reduced-motion & media queries
+└── styles/index.css        # Tailwind 4 tokens, base styles, overlays
 ```
 
----
+## Deployment
 
-## Project Roadmap
+The workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds the site
+and publishes it to **GitHub Pages** on every push to `main`. In the repository, open
+*Settings → Pages* and set **Source** to **GitHub Actions**.
 
-- [x] `► Create configuration file`
-- [ ] `► Animate background`
+The build uses relative asset paths, so `dist/` can also go to Vercel, Netlify, Cloudflare
+Pages or any static host as-is.
 
----
+## Credits
 
-## Contributing
-
-Contributions are welcome! Here are several ways you can contribute:
-
-- **[Submit Pull Requests](https://github/Joansitoh/developer-portafolio/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-- **[Join the Discussions](https://github/Joansitoh/developer-portafolio/discussions)**: Share your insights, provide feedback, or ask questions.
-- **[Report Issues](https://github/Joansitoh/developer-portafolio/issues)**: Submit bugs found or log feature requests for Developer-portafolio.
-
-<details closed>
-    <summary>Contributing Guidelines</summary>
-
-1. **Fork the Repository**: Start by forking the project repository to your GitHub account.
-2. **Clone Locally**: Clone the forked repository to your local machine using a Git client.
-   ```sh
-   git clone https://github.com/Joansitoh/developer-portafolio
-   ```
-3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
-   ```sh
-   git checkout -b new-feature-x
-   ```
-4. **Make Your Changes**: Develop and test your changes locally.
-5. **Commit Your Changes**: Commit with a clear message describing your updates.
-   ```sh
-   git commit -m 'Implemented new feature x.'
-   ```
-6. **Push to GitHub**: Push the changes to your forked repository.
-   ```sh
-   git push origin new-feature-x
-   ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-
-Once your PR is reviewed and approved, it will be merged into the main branch.
-
-</details>
-
----
+- [GSAP](https://gsap.com) by GreenSock, under its standard no-charge license.
+- [Lenis](https://github.com/darkroomengineering/lenis) by darkroom.engineering (MIT).
+- Simplex noise GLSL by Ian McEwan, Ashima Arts (MIT).
+- [JetBrains Mono](https://www.jetbrains.com/lp/mono/) and
+  [Instrument Serif](https://github.com/Instrument/instrument-serif), both under the SIL Open
+  Font License.
 
 ## License
 
-This project is protected under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For more details, refer to the [LICENSE](https://www.apache.org/licenses/LICENSE-2.0) file.|
-
----
-
-[**Return**](#quick-links)
-
----
+Released under the [Apache License 2.0](LICENSE).

@@ -2,48 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Developer Portafolio</title>
-
-    <style>
-      #bg-custom {
-        z-index: -1;
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        background-color: black;
-      }
-
-      #bg-custom > div:first-child {
-        z-index: -1;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: 0;
-        background-image: linear-gradient(to right, #4f4f4f2e 1px, transparent 1px), linear-gradient(to bottom, #8080800a 1px, transparent 1px);
-        background-size: 14px 24px;
-      }
-      #bg-custom > div:last-child {
-        z-index: -1;
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: -10%;
-        height: 1000px;
-        width: 1000px;
-        border-radius: 50%;
-        background-image: radial-gradient(circle 400px at 50% 300px, #fbfbfb36, #000);
-      }
-    </style>
+    <title>Joan — software that runs</title>
+    <meta name="description" content="Joan (Joansiitoh) — full-stack & systems developer from Barcelona. Browser extensions, Rust + WebAssembly, Linux tooling and the web." />
+    <meta name="theme-color" content="#08090a" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Joan — software that runs" />
+    <meta property="og:description" content="Full-stack & systems developer from Barcelona. Open the terminal with the ` key." />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   </head>
   <body>
+    <noscript>
+      <pre style="color:#b6ff3b;background:#08090a;padding:2rem;font-family:monospace">
+$ ./portfolio
+error: JavaScript is disabled — this terminal needs it to boot.
+see https://github.com/Joansitoh
+      </pre>
+    </noscript>
     <div id="root"></div>
-    <div id="bg-custom">
-      <div></div>
-      <div></div>
-    </div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
