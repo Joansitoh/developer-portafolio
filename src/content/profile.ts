@@ -72,7 +72,7 @@ export const profile = {
     "Since then I've run Linux servers, written the SSH monitors and firewall GUIs I needed for them, shipped React and Electron tools, a browser extension on the Chrome Web Store, a full KDE Plasma theme and, lately, Rust code compiled to WebAssembly.",
     "I like small, sharp tools, interfaces that feel instant, and automating anything I have to do twice.",
   ],
-  email: "support@bitanetic.com",
+  email: "dev@joancabrera.es",
   socials: [
     { label: "github", handle: "@Joansitoh", url: GH },
     { label: "linkedin", handle: "in/joansiitoh", url: "https://www.linkedin.com/in/joansiitoh" },
