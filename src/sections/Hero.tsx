@@ -24,26 +24,46 @@ export default function Hero() {
       if (!window.matchMedia("(pointer: fine)").matches || prefersReducedMotion()) return;
       const letters = gsap.utils.toArray<HTMLElement>("[data-letter]", root.current);
       const weights = letters.map(() => W_REST);
+      const shown = letters.map(() => W_REST);
       const pointer = { x: -1e4, y: -1e4 };
-      const onMove = (e: PointerEvent) => {
-        pointer.x = e.clientX;
-        pointer.y = e.clientY;
-      };
-      const tick = () => {
-        if (!root.current || window.scrollY > window.innerHeight) return;
-        letters.forEach((el, i) => {
-          const r = el.getBoundingClientRect();
-          const d = Math.hypot(pointer.x - (r.left + r.width / 2), pointer.y - (r.top + r.height / 2));
-          const radius = r.height * 1.1;
-          const t = Math.max(0, 1 - d / radius);
-          const target = W_REST + (W_PEAK - W_REST) * t * t;
-          weights[i] += (target - weights[i]) * 0.14;
-          el.style.fontVariationSettings = `"wght" ${weights[i].toFixed(0)}`;
+      // letter centres in page coordinates, measured once (not every frame)
+      let centres: { x: number; y: number; r: number }[] = [];
+      const measure = () => {
+        centres = letters.map((el) => {
+          const b = el.getBoundingClientRect();
+          return { x: b.left + b.width / 2, y: b.top + window.scrollY + b.height / 2, r: b.height * 1.1 };
         });
       };
+      measure();
+      let settled = true;
+      const onMove = (e: PointerEvent) => {
+        pointer.x = e.clientX;
+        pointer.y = e.clientY + window.scrollY;
+        settled = false;
+      };
+      const tick = () => {
+        if (settled || window.scrollY > window.innerHeight) return;
+        let moving = false;
+        letters.forEach((el, i) => {
+          const c = centres[i];
+          const t = Math.max(0, 1 - Math.hypot(pointer.x - c.x, pointer.y - c.y) / c.r);
+          const target = W_REST + (W_PEAK - W_REST) * t * t;
+          weights[i] += (target - weights[i]) * 0.14;
+          if (Math.abs(target - weights[i]) > 0.5) moving = true;
+          const w = Math.round(weights[i]);
+          if (w !== shown[i]) {
+            shown[i] = w;
+            el.style.fontVariationSettings = `"wght" ${w}`;
+          }
+        });
+        settled = !moving;
+      };
+      const ro = new ResizeObserver(measure);
+      ro.observe(root.current!);
       window.addEventListener("pointermove", onMove, { passive: true });
       gsap.ticker.add(tick);
       return () => {
+        ro.disconnect();
         window.removeEventListener("pointermove", onMove);
         gsap.ticker.remove(tick);
       };
@@ -56,7 +76,8 @@ export default function Hero() {
     () => {
       const q = gsap.utils.selector(root);
       if (prefersReducedMotion()) {
-        gsap.set(q("[data-in]"), { autoAlpha: 1 });
+        // no movement, just a soft fade so the page doesn't pop in
+        gsap.fromTo(q("[data-in]"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, stagger: 0.04, ease: "power1.out" });
         return;
       }
       if (!booted) {
@@ -132,7 +153,7 @@ export default function Hero() {
           <span className="text-fg">~/{profile.handle}</span> <span className="hidden text-mute sm:inline">— portfolio v2.0.0</span>
         </span>
         {profile.available && (
-          <span data-in className="flex items-center gap-2.5 rounded-full border border-line-2 bg-bg/60 px-3 py-1.5 backdrop-blur">
+          <span data-in className="flex items-center gap-2.5 rounded-full border border-line-2 bg-bg/80 px-3 py-1.5">
             <span className="pulse-dot" />
             <span className="whitespace-nowrap text-fg">{profile.availability}</span>
           </span>

@@ -31,7 +31,7 @@ export default function Footer() {
       <div className="absolute inset-0 opacity-70 [mask-image:linear-gradient(to_top,#000_20%,transparent_95%)]">
         <AsciiField intensity={0.7} cell={16} rain={1} />
       </div>
-      <div className="shell-wrap relative pt-28">
+      <div className="shell-wrap relative @container pt-28">
         <p className="text-sm text-dim">
           <span className="text-mute">$</span> echo $?
         </p>
@@ -40,7 +40,7 @@ export default function Footer() {
         <p
           data-wordmark
           aria-hidden="true"
-          className="mt-14 text-[clamp(4.5rem,19vw,18rem)] leading-[0.8] font-bold tracking-[-0.07em] whitespace-nowrap"
+          className="mt-14 pb-[0.12em] text-[16.5cqi] leading-[0.9] font-bold tracking-[-0.07em] whitespace-nowrap"
         >
           {profile.handle}
           <span className="text-accent">_</span>

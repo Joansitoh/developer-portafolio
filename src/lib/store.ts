@@ -8,7 +8,12 @@ interface State {
   accent: AccentName;
   crt: boolean;
   active: SectionId;
+  /** Lighter rendering for slow machines: no grain, cheaper shader. */
+  lite: boolean;
+  perf: Perf;
 }
+
+export type Perf = "auto" | "lite" | "full";
 
 const listeners = new Set<() => void>();
 
@@ -29,6 +34,17 @@ function write(key: string, value: unknown) {
 }
 
 const savedAccent = read<string>("joan.accent", "phosphor");
+const savedPerf = read<Perf>("joan.perf", "auto");
+
+/** Cheap up-front guess; App refines it with a short FPS probe. */
+function weakDevice() {
+  const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
+  return (
+    (nav.hardwareConcurrency ?? 8) <= 4 ||
+    (nav.deviceMemory ?? 8) <= 4 ||
+    nav.connection?.saveData === true
+  );
+}
 
 let state: State = {
   booted: false,
@@ -36,6 +52,8 @@ let state: State = {
   accent: isAccent(savedAccent) ? savedAccent : "phosphor",
   crt: read<boolean>("joan.crt", true),
   active: "home",
+  perf: savedPerf,
+  lite: savedPerf === "lite" || (savedPerf === "auto" && weakDevice()),
 };
 
 export const store = {
@@ -46,6 +64,8 @@ export const store = {
       applyAccent(patch.accent);
       write("joan.accent", patch.accent);
     }
+    if (patch.perf) write("joan.perf", patch.perf);
+    if (patch.lite !== undefined) document.documentElement.classList.toggle("lite", patch.lite);
     if (patch.crt !== undefined) {
       document.documentElement.classList.toggle("no-crt", !patch.crt);
       write("joan.crt", patch.crt);
@@ -63,6 +83,7 @@ export const store = {
 // Apply persisted preferences before the first paint of the app.
 applyAccent(state.accent);
 document.documentElement.classList.toggle("no-crt", !state.crt);
+document.documentElement.classList.toggle("lite", state.lite);
 
 export function useStore<T>(selector: (s: State) => T): T {
   return useSyncExternalStore(store.subscribe, () => selector(store.get()));

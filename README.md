@@ -122,6 +122,7 @@ completion for commands and arguments, and <kbd>Ctrl</kbd>+<kbd>L</kbd> to clear
 | `contact` | Email and socials |
 | `theme <name>` | Switch the accent live: `phosphor`, `amber`, `cyan`, `magenta`, `ice` |
 | `crt on\|off` | Toggle scanlines and film grain |
+| `perf auto\|lite\|full` | Rendering quality (lite = no grain, cheaper shader) |
 | `history` · `date` · `echo` · `clear` · `exit` | The usual |
 
 There are also a few easter eggs. Try `sudo`, `vim` or `rm -rf /`.
@@ -180,8 +181,15 @@ accent. Accent colours live in [`src/lib/themes.ts`](src/lib/themes.ts).
 - Skip link, semantic landmarks, keyboard-reachable navigation and terminal, and visible focus
   states. Animated text keeps an accessible label.
 - The native cursor stays on touch devices and inside text fields.
-- The shader caps device pixel ratio at 1.5 and pauses when it's off screen or the tab is
-  hidden.
+- **Two-pass shader.** The noise runs once per character cell into a tiny texture (~100×60),
+  then a trivial per-pixel pass stamps the glyphs: roughly 200× less GPU work than per pixel.
+  It starts only once it's near the viewport and after the intro, and pauses off screen or in
+  hidden tabs.
+- **Adaptive quality.** Sustained slow frames lower the shader resolution, then cap it at 30 fps.
+- **Lite mode** turns on automatically on low-end hardware (≤ 4 cores, ≤ 4 GB RAM, Save-Data)
+  or when a short FPS probe after load reads under 40 fps. It drops the film grain and starts
+  the shader in its cheapest setting. Override it from the terminal: `perf auto|lite|full`.
+- No full-screen blend modes or backdrop blurs, which are expensive to composite on weak GPUs.
 - The boot sequence is shown once per session and any key skips it.
 
 ## Project structure

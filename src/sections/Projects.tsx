@@ -39,7 +39,7 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
   return (
     <article
       data-panel
-      className="relative grid w-full shrink-0 gap-6 border border-line-2 bg-bg-2/70 p-5 backdrop-blur-sm md:p-8 lg:h-[min(72vh,680px)] lg:w-[min(84vw,1180px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-10"
+      className="relative grid w-full shrink-0 gap-6 border border-line-2 bg-bg-2 p-5 md:p-8 lg:h-[min(72vh,680px)] lg:w-[min(84vw,1180px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-10"
     >
       <div className="relative flex min-w-0 flex-col">
         <span

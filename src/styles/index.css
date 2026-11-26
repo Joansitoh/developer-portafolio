@@ -202,25 +202,26 @@
   background:
     repeating-linear-gradient(
       to bottom,
-      rgb(255 255 255 / 0.025) 0,
-      rgb(255 255 255 / 0.025) 1px,
+      rgb(0 0 0 / 0.1) 0,
+      rgb(0 0 0 / 0.1) 1px,
       transparent 1px,
       transparent 3px
     ),
-    radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.55) 100%);
-  mix-blend-mode: overlay;
+    radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.45) 100%);
 }
 .noise-overlay {
   pointer-events: none;
   position: fixed;
   inset: -50%;
   z-index: 91;
-  opacity: 0.05;
+  opacity: 0.045;
+  will-change: transform;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   animation: grain 0.9s steps(6) infinite;
 }
 html.no-crt .crt-overlay,
-html.no-crt .noise-overlay {
+html.no-crt .noise-overlay,
+html.lite .noise-overlay {
   display: none;
 }
 

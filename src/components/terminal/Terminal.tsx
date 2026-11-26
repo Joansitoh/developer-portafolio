@@ -173,7 +173,7 @@ export default function Terminal() {
       <div
         ref={backdrop}
         onClick={close}
-        className="invisible fixed inset-0 z-[120] bg-black/60 opacity-0 backdrop-blur-[2px]"
+        className="invisible fixed inset-0 z-[120] bg-black/70 opacity-0"
         aria-hidden="true"
       />
       <div
@@ -182,7 +182,7 @@ export default function Terminal() {
         aria-modal="true"
         aria-label="Interactive terminal"
         data-lenis-prevent
-        className="invisible fixed inset-x-0 top-0 z-[130] flex h-[min(68vh,640px)] flex-col border-b border-accent/40 bg-bg-2/95 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8)] backdrop-blur-md"
+        className="invisible fixed inset-x-0 top-0 z-[130] flex h-[min(68vh,640px)] flex-col border-b border-accent/40 bg-bg-2 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8)]"
         style={{ clipPath: "inset(0 0 100% 0)" }}
         onClick={() => input.current?.focus()}
       >

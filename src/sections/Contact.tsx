@@ -47,7 +47,7 @@ function Session() {
   };
 
   return (
-    <div data-session className="flex min-h-[420px] flex-col border border-line-2 bg-bg-2/80 backdrop-blur" onClick={() => input.current?.focus()}>
+    <div data-session className="flex min-h-[420px] flex-col border border-line-2 bg-bg-2" onClick={() => input.current?.focus()}>
       <div className="flex items-center gap-2 border-b border-line px-4 py-2.5 text-[11px] text-dim">
         <span className="h-2.5 w-2.5 rounded-full bg-[var(--danger)]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[var(--warn)]" />

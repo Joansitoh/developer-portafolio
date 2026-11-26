@@ -219,6 +219,20 @@ export const commands: Record<string, Command> = {
       print(<D>crt effects {next ? "on" : "off"}</D>);
     },
   },
+  perf: {
+    desc: "rendering quality",
+    usage: "perf [auto|lite|full]",
+    complete: () => ["auto", "lite", "full"],
+    run: (args, { print }) => {
+      const mode = args[0];
+      if (mode !== "auto" && mode !== "lite" && mode !== "full") {
+        const s = store.get();
+        return print(<D>perf: {s.perf} — currently {s.lite ? "lite" : "full"} rendering. usage: perf auto|lite|full</D>);
+      }
+      store.set({ perf: mode, lite: mode === "lite" });
+      print(<D>perf set to {mode}{mode === "full" ? " — reload for full shader resolution" : ""}</D>);
+    },
+  },
   history: {
     desc: "commands you ran",
     run: (_, { print, history }) => history.forEach((h, i) => print(<D>{String(i + 1).padStart(4, " ")}  {h}</D>)),

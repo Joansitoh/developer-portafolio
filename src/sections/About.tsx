@@ -21,7 +21,7 @@ const STATS = [
 function Neofetch() {
   const rows = profile.neofetch.map(([k, v]) => [k, k === "uptime" ? uptime() : v]);
   return (
-    <div data-neofetch className="relative overflow-hidden border border-line-2 bg-bg-2/80 backdrop-blur">
+    <div data-neofetch className="relative overflow-hidden border border-line-2 bg-bg-2">
       <div className="flex items-center gap-2 border-b border-line px-4 py-2.5 text-[11px] text-dim">
         <span className="h-2.5 w-2.5 rounded-full bg-[var(--danger)]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[var(--warn)]" />

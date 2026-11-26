@@ -5,6 +5,7 @@ import StatusBar from "./components/StatusBar";
 import Terminal from "./components/terminal/Terminal";
 import { ScrollTrigger } from "./lib/gsap";
 import { startSmoothScroll } from "./lib/smooth";
+import { store } from "./lib/store";
 import { useReducedMotion } from "./hooks/useReducedMotion";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
@@ -18,6 +19,26 @@ export default function App() {
   const reduced = useReducedMotion();
 
   useEffect(() => startSmoothScroll(reduced), [reduced]);
+
+  // Short FPS probe once the page is up: if this machine can't hold ~40 fps,
+  // switch to lite mode (no grain, cheaper shader) unless the user chose otherwise.
+  useEffect(() => {
+    if (store.get().perf !== "auto" || store.get().lite) return;
+    let raf = 0;
+    let frames = 0;
+    let t0 = 0;
+    const probe = (now: number) => {
+      if (!t0) t0 = now;
+      frames++;
+      if (now - t0 < 2000) raf = requestAnimationFrame(probe);
+      else if ((frames * 1000) / (now - t0) < 40) store.set({ lite: true });
+    };
+    const id = setTimeout(() => (raf = requestAnimationFrame(probe)), 2500);
+    return () => {
+      clearTimeout(id);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   // Web fonts change line breaks; re-measure every trigger once they're in.
   useEffect(() => {

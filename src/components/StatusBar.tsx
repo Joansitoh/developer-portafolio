@@ -26,22 +26,28 @@ export default function StatusBar() {
   const pct = useRef<HTMLSpanElement>(null);
 
   useGSAP(() => {
+    // Markers only: the active window is the last section whose top has
+    // crossed 55% of the viewport, so jumps and the footer resolve correctly.
     const triggers = sections.map((s) =>
-      ScrollTrigger.create({
-        trigger: `#${s.id}`,
-        start: "top 55%",
-        end: "bottom 55%",
-        refreshPriority: -1,
-        onToggle: (self) => self.isActive && store.set({ active: s.id as SectionId }),
-      }),
+      ScrollTrigger.create({ trigger: `#${s.id}`, start: "top 55%", refreshPriority: -1 }),
     );
+    const sync = (scroll: number) => {
+      let current = 0;
+      triggers.forEach((t, i) => {
+        if (scroll >= t.start) current = i;
+      });
+      const id = sections[current].id as SectionId;
+      if (store.get().active !== id) store.set({ active: id });
+    };
     const meter = ScrollTrigger.create({
       start: 0,
       end: "max",
-      refreshPriority: -1,
+      refreshPriority: -2,
       onUpdate: (self) => {
         if (pct.current) pct.current.textContent = String(Math.round(self.progress * 100)).padStart(3, " ");
+        sync(self.scroll());
       },
+      onRefresh: (self) => sync(self.scroll()),
     });
     return () => {
       triggers.forEach((t) => t.kill());
@@ -61,7 +67,7 @@ export default function StatusBar() {
     <nav
       ref={bar}
       aria-label="Sections"
-      className="fixed inset-x-0 bottom-0 z-[100] flex h-[var(--status-h)] items-stretch border-t border-line bg-bg/85 text-[11px] backdrop-blur-md sm:text-xs"
+      className="fixed inset-x-0 bottom-0 z-[100] flex h-[var(--status-h)] items-stretch border-t border-line bg-bg/95 text-[11px] sm:text-xs"
     >
       <button
         onClick={() => scrollToId("home")}
